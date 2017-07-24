@@ -13,22 +13,33 @@
         }).done(function(response) {
 
           // Creating a div to hold the movie
-          var topicDiv = $("<div class='movie'>");
+          var topicDiv = $("<div class='topix'>");
 
           // Storing the rating data
-          var ratings = response.data.rating;
+          var ratings;
+          var imagez;
+          
+          console.log(ratings)
+          console.log(response)
 
           // Creating an element to have the rating displayed
-          var pOne = $("<p>").text("Rating: " + ratings);
-
-          // Displaying the rating
-          topicDiv.append(pOne);
 
           // Storing the release year
           var released = response.Released;
 
+          // Displaying the rating
+          for(i=0; i<25; i++){
+            ratings=response.data[i].rating
+            imagez= response.data[i].bitly_gif_url
+            var pOne = $("<p>").text("Rating: " + ratings);
+            var pTwo = $("<img>").attr("src", imagez);
+            topicDiv.append(pOne);
+            topicDiv.append(pTwo);
+            console.log(imagez)
+          }
+          
           // Creating an element to hold the release year
-          var pTwo = $("<p>").text("Released: " + released);
+          
 
           // Displaying the release year
           // movieDiv.append(pTwo);
@@ -42,17 +53,17 @@
           // Appending the plot
           //topicDiv.append(pThree);
 
-          // Retrieving the URL for the image
-          var imgURL = response.Poster;
+          // // Retrieving the URL for the image
+          // var imgURL = response.Poster;
 
-          // Creating an element to hold the image
-          var image = $("<img>").attr("src", imgURL);
+          // // Creating an element to hold the image
+          // var image = $("<img>").attr("src", imgURL);
 
-          // Appending the image
-          topicDiv.append(image);
+          // // Appending the image
+          // topicDiv.append(image);
 
           // Putting the entire movie above the previous movies
-          $("#topic-base").prepend(topicDiv);
+          $("#resultz").append(topicDiv);
         });
 
       }
