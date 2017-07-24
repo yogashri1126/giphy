@@ -30,7 +30,7 @@
           // Displaying the rating
           for(i=0; i<25; i++){
             ratings=response.data[i].rating
-            imagez= response.data[i].bitly_gif_url
+            imagez= response.data[i].images.fixed_height.url
             var pOne = $("<p>").text("Rating: " + ratings);
             var pTwo = $("<img>").attr("src", imagez);
             topicDiv.append(pOne);
@@ -63,7 +63,7 @@
           // topicDiv.append(image);
 
           // Putting the entire movie above the previous movies
-          $("#resultz").append(topicDiv);
+          $("#resultz").prepend(topicDiv);
         });
 
       }
